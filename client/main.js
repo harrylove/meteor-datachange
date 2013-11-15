@@ -21,11 +21,13 @@ Template.application.thing = function() {
     if (thing) {
 	var viewName = thing.view || 'default';
         var view = Views.findOne({ name: viewName });
-        var templates = _.map(view.templates, function(key) {
-            var template = Template[key] || Template.unknown;
-            return template({ key: key, val: thing[key] });
-        });
-        return templates.join('');
+	if (view) {
+	    var templates = _.map(view.templates, function(key) {
+                var template = Template[key] || Template.unknown;
+                return template({ key: key, val: thing[key] });
+            });
+            return templates.join('');
+        }
     }
 };
 
