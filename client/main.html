@@ -1,0 +1,43 @@
+<head>
+  <title>Data and View Change</title>
+</head>
+
+<body>
+  {{> application }}
+</body>
+
+<template name="application">
+  <h1>All Things</h1>
+  {{> thingList }}
+
+  <h2>Selected Thing</h2>
+  {{{ thing }}}
+</template>
+
+<template name="thingList">
+  <ul>
+  {{#each things}}
+    <li><a href="#">{{ _id }}</a></li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="unknown">
+  <div>{{ key }}: {{ val }}</div>
+</template>
+
+<template name="age">
+  <div>{{ key }}: <span style="color:red">{{ val }}</span></div>
+</template>
+
+<template name="name">
+  <div>{{ key }}: <span style="color:green">{{ val }}</span></div>
+</template>
+
+<template name="occupation">
+  <div>{{ key }}: <span style="color:blue">{{ val }}</span></div>
+</template>
+
+<template name="_id">
+  <div>{{ key }}: <span style="color:orange">{{ val }}</span></div>
+</template>
