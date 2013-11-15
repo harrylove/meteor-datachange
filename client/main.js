@@ -1,3 +1,6 @@
+Meteor.subscribe('things');
+Meteor.subscribe('views');
+
 Meteor.startup(function() {
     Deps.autorun(function(comp) {
         if (!Session.get('id')) {
