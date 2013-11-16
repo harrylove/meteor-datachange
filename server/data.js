@@ -23,7 +23,7 @@ var things = [
 Meteor.startup(function() {
 
     if (Views.find().count() == 0) {
-	_.each(views, function(view) {
+        _.each(views, function(view) {
             Views.insert(view);
         });
     }
