@@ -6,6 +6,7 @@ Meteor.publish('views', function() {
     return Views.find();
 });
 
+
 var views = [
     { name: 'default', templates: ['occupation', 'age', 'name'] },
     { name: 'country', templates: ['country', 'year', 'status'] },

@@ -3,17 +3,21 @@
 </head>
 
 <body>
-  <a href="https://github.com/harrylove/meteor-datachange"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
-
   {{> application }}
 </body>
 
 <template name="application">
   <h1>All Things</h1>
   {{> thingList }}
-
+  
   <h2>Selected Thing</h2>
-  {{{ thing }}}
+  {{> thing }}
+</template>
+
+<template name="thing">
+  {{#each thingViews }}
+  {{> UI.dynamic template=this data=getActiveThing }}
+  {{/each}}
 </template>
 
 <template name="thingList">
@@ -24,22 +28,34 @@
   </ul>
 </template>
 
-<template name="unknown">
-  <div>{{ key }}: {{ val }}</div>
+<template name="tpl_unknown">
+  <div>Hey</div>
 </template>
 
-<template name="age">
-  <div>{{ key }}: <span style="color:red">{{ val }}</span></div>
+<template name="tpl_age">
+  <div>Age: <span style="color:red">{{ age }}</span></div>
 </template>
 
-<template name="name">
-  <div>{{ key }}: <span style="color:green">{{ val }}</span></div>
+<template name="tpl_name">
+  <div>Name: <span style="color:green">{{ name }}</span></div>
 </template>
 
-<template name="occupation">
-  <div>{{ key }}: <span style="color:blue">{{ val }}</span></div>
+<template name="tpl_occupation">
+  <div>Occupation: <span style="color:blue">{{ occupation }}</span></div>
 </template>
 
-<template name="_id">
-  <div>{{ key }}: <span style="color:orange">{{ val }}</span></div>
+<template name="tpl_id">
+  <div>ID: <span style="color:orange">{{ _id }}</span></div>
+</template>
+
+<template name="tpl_country">
+  <div>Country: <span style="color:green">{{ country }}</span></div>
+</template>
+
+<template name="tpl_year">
+  <div>Occupation: <span style="color:blue">{{ year }}</span></div>
+</template>
+
+<template name="tpl_status">
+  <div>Status: <span style="color:orange">{{ status }}</span></div>
 </template>

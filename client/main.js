@@ -12,22 +12,26 @@ Meteor.startup(function() {
     });
 });
 
-var active = function() {
+var getActiveThing = function() {
     return Things.findOne(Session.get('id'));
 };
 
-Template.application.thing = function() {
-    var thing = active();
+Template.thing.theTemplate = function() {
+    return this.toString();
+};
+
+Template.thing.getActiveThing = function() {
+    return getActiveThing();
+};
+
+Template.thing.thingViews = function() {
+    var thing = getActiveThing();
     if (thing) {
-	var viewName = thing.view || 'default';
+        var viewName = thing && thing.view || 'default';
         var view = Views.findOne({ name: viewName });
-	if (view) {
-	    var templates = _.map(view.templates, function(key) {
-                var template = Template[key] || Template.unknown;
-                return template({ key: key, val: thing[key] });
-            });
-            return templates.join('');
-        }
+	return view && _.map(view.templates, function(name) {
+	    return 'tpl_' + name;
+	});
     }
 };
 
